@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Gráfica Castello – Impressão digital, cartões de visita, adesivos, banners e muito mais. Contagem/MG.">
+<title>Gráfica Castello | Impressão Digital</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<style>
+/* ─── TOKENS ───────────────────────────────── */
+:root {
+  --orange: #F5500A;
+  --orange-dark: #C93F00;
+  --orange-glow: rgba(245,80,10,.18);
+  --black: #0D0D0D;
+  --charcoal: #181818;
+  --card-bg: #1D1D1D;
+  --border: rgba(255,255,255,.08);
+  --muted: #888;
+  --white: #fff;
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --transition: .25s cubic-bezier(.4,0,.2,1);
+}
+
+/* ─── RESET ──────────────────────────────── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:72px;}
+body{font-family:var(--font-body);background:var(--black);color:var(--white);overflow-x:hidden;line-height:1.6;}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+button{font-family:var(--font-body);cursor:pointer;}
+ul{list-style:none;}
+
+/* ─── UTILITIES ──────────────────────────── */
+.container{max-width:1180px;margin:0 auto;padding:0 24px;}
+.section-pad{padding:100px 0;}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:14px;}
+.tag::before{content:'';width:18px;height:2px;background:var(--orange);display:block;}
+.section-title{font-family:var(--font-display);font-size:clamp(2rem,5vw,3rem);font-weight:800;line-height:1.05;letter-spacing:-.01em;margin-bottom:16px;}
+.section-sub{color:var(--muted);font-size:1rem;max-width:500px;}
+.highlight{color:var(--orange);}
+
+/* ─── BUTTONS ────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:9999px;font-weight:600;font-size:.9rem;border:none;transition:var(--transition);}
+.btn-primary{background:var(--orange);color:#fff;}
+.btn-primary:hover{background:var(--orange-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,80,10,.4);}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.25);}
+.btn-ghost:hover{border-color:var(--orange);color:var(--orange);}
+.btn-outline-orange{background:transparent;color:var(--orange);border:1.5px solid var(--orange);}
+.btn-outline-orange:hover{background:var(--orange);color:#fff;transform:translateY(-2px);}
+.btn-lg{padding:16px 34px;font-size:1rem;}
+.btn-sm{padding:9px 20px;font-size:.82rem;}
+.btn-whatsapp{background:#25D366;color:#fff;}
+.btn-whatsapp:hover{background:#1baa50;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.35);}
+
+/* ─── SCROLLBAR ──────────────────────────── */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--black);}
+::-webkit-scrollbar-thumb{background:var(--orange);border-radius:9px;}
+
+/* ─── HEADER ─────────────────────────────── */
+.header{position:fixed;inset:0 0 auto;z-index:900;transition:var(--transition);}
+.header::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,13,13,.97),transparent);pointer-events:none;}
+.header.solid::before{background:rgba(13,13,13,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.header-inner{position:relative;display:flex;align-items:center;justify-content:space-between;height:72px;}
+.logo{display:flex;align-items:center;gap:10px;z-index:1;}
+.logo img{height:36px;width:auto;}
+.logo-text{font-family:var(--font-display);font-size:1.5rem;font-weight:800;letter-spacing:-.01em;}
+.logo-text span{color:var(--orange);}
+.nav{display:flex;align-items:center;gap:6px;}
+.nav a{font-size:.875rem;font-weight:500;color:var(--muted);padding:6px 12px;border-radius:9999px;transition:var(--transition);}
+.nav a:hover{color:#fff;background:rgba(255,255,255,.07);}
+.header-cta{display:flex;align-items:center;gap:10px;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;}
+.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:var(--transition);}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+/* ─── MOBILE NAV ─────────────────────────── */
+.mobile-nav{position:fixed;inset:72px 0 0;background:var(--charcoal);z-index:800;padding:32px 24px;display:flex;flex-direction:column;gap:8px;transform:translateX(100%);transition:.35s cubic-bezier(.4,0,.2,1);}
+.mobile-nav.open{transform:translateX(0);}
+.mobile-nav a{font-size:1.25rem;font-weight:600;color:var(--muted);padding:14px 0;border-bottom:1px solid var(--border);display:block;transition:var(--transition);}
+.mobile-nav a:hover{color:var(--orange);}
+
+/* ─── HERO / BANNER ──────────────────────── */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;}
+.banner-track{position:relative;flex:1;min-height:100svh;}
+.banner-slide{position:absolute;inset:0;opacity:0;transition:opacity .9s ease;}
+.banner-slide.active{opacity:1;}
+.banner-bg{position:absolute;inset:0;background:var(--black);}
+.banner-bg img{width:100%;height:100%;object-fit:cover;opacity:.28;filter:saturate(.7);}
+.banner-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,rgba(13,13,13,.85) 40%,transparent 100%);}
+.banner-content{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;min-height:100svh;padding:100px 24px 80px;max-width:1180px;margin:0 auto;width:100%;}
+.banner-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:20px;}
+.banner-eyebrow::before{content:'';width:24px;height:2px;background:var(--orange);}
+.banner-h1{font-family:var(--font-display);font-size:clamp(3rem,9vw,6.5rem);font-weight:900;line-height:.95;letter-spacing:-.02em;margin-bottom:22px;}
+.banner-p{font-size:1.05rem;color:rgba(255,255,255,.75);max-width:480px;margin-bottom:36px;line-height:1.65;}
+.banner-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.banner-controls{position:absolute;bottom:32px;right:24px;z-index:10;display:flex;gap:8px;align-items:center;}
+.banner-arrow{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;display:flex;align-items:center;justify-content:center;transition:var(--transition);font-size:.9rem;}
+.banner-arrow:hover{background:var(--orange);border-color:var(--orange);}
+.banner-dots{display:flex;gap:6px;margin:0 12px;}
+.banner-dot{width:6px;height:6px;border-radius:9999px;background:rgba(255,255,255,.25);border:none;transition:var(--transition);padding:0;}
+.banner-dot.active{background:var(--orange);width:22px;}
+.banner-count{font-size:.75rem;font-weight:600;color:var(--muted);}
+
+/* ─── SIMULADOR ──────────────────────────── */
+.sim-section{margin-top:-48px;position:relative;z-index:20;padding-bottom:80px;}
+.sim-card{background:var(--charcoal);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.sim-header{padding:28px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:12px;}
+.sim-header h2{font-family:var(--font-display);font-size:1.55rem;font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:10px;}
+.sim-header h2 i{color:var(--orange);font-size:1.2rem;}
+.sim-steps-bar{display:flex;gap:0;background:rgba(255,255,255,.04);border-radius:9999px;padding:4px;}
+.sim-step-pill{font-size:.75rem;font-weight:600;padding:5px 14px;border-radius:9999px;color:var(--muted);transition:var(--transition);}
+.sim-step-pill.active{background:var(--orange);color:#fff;}
+.sim-body{padding:32px;}
+.sim-step{display:none;}
+.sim-step.active{display:block;}
+
+/* Breadcrumb */
+.sim-breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:18px;font-size:.8rem;color:var(--muted);}
+.sim-breadcrumb .bc-cat{color:var(--orange);font-weight:600;}
+.sim-breadcrumb .bc-sep{opacity:.4;}
+/* Step 1: 6 categorias 2x3 */
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.cat-btn{background:rgba(255,255,255,.04);border:1.5px solid var(--border);border-radius:14px;padding:22px 18px;text-align:left;transition:var(--transition);display:flex;flex-direction:column;gap:10px;cursor:pointer;}
+.cat-btn:hover{border-color:var(--orange);background:var(--orange-glow);transform:translateY(-2px);}
+.cat-icon{width:44px;height:44px;background:rgba(245,80,10,.15);border:1px solid rgba(245,80,10,.25);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--orange);}
+.cat-label{font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:#fff;line-height:1.2;}
+.cat-sub{font-size:.78rem;color:var(--muted);line-height:1.4;}
+/* Step 2: subcategorias */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:4px;}
+.prod-btn{background:rgba(255,255,255,.04);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:12px 10px;text-align:center;transition:var(--transition);display:flex;flex-direction:column;align-items:center;gap:7px;color:var(--muted);font-size:.8rem;font-weight:600;cursor:pointer;}
+.prod-btn i{font-size:1.15rem;color:var(--orange);}
+.prod-btn:hover{border-color:var(--orange);color:#fff;background:var(--orange-glow);}
+.prod-btn.sel{border-color:var(--orange);background:var(--orange-glow);color:#fff;}
+/* Step 3: detalhes */
+.field-group{margin-bottom:26px;}
+.field-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:block;}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{background:rgba(255,255,255,.05);border:1.5px solid var(--border);border-radius:9999px;padding:7px 16px;font-size:.82rem;font-weight:500;color:var(--muted);transition:var(--transition);cursor:pointer;}
+.chip:hover,.chip.sel{border-color:var(--orange);color:#fff;background:var(--orange-glow);}
+.chip-input{width:100%;background:rgba(255,255,255,.05);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:11px 14px;color:#fff;font-family:var(--font-body);font-size:.9rem;margin-top:10px;transition:var(--transition);}
+.chip-input.hidden{display:none;}
+.chip-input:focus{outline:none;border-color:var(--orange);}
+.chip-input::placeholder{color:var(--muted);}
+/* Step 4: resumo */
+.summary-box{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:24px;}
+.summary-box h3{font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:16px;color:var(--orange);}
+.summary-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:.9rem;}
+.summary-row:last-child{border:none;}
+.summary-row span:first-child{color:var(--muted);}
+.summary-row span:last-child{font-weight:600;}
+.extra-textarea{width:100%;background:rgba(255,255,255,.04);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:13px;color:#fff;font-family:var(--font-body);font-size:.9rem;resize:vertical;min-height:90px;margin-bottom:20px;}
+.extra-textarea:focus{outline:none;border-color:var(--orange);}
+.extra-textarea::placeholder{color:var(--muted);}
+/* Nav */
+.sim-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.sim-nav-left{display:flex;align-items:center;gap:14px;}
+.sim-back{background:none;border:1.5px solid var(--border);border-radius:9999px;color:var(--muted);padding:9px 18px;font-size:.82rem;font-weight:600;display:flex;align-items:center;gap:7px;transition:var(--transition);cursor:pointer;}
+.sim-back:hover{border-color:rgba(255,255,255,.3);color:#fff;}
+.sim-prog-bar{width:100px;height:4px;background:rgba(255,255,255,.1);border-radius:9999px;overflow:hidden;}
+.sim-prog-fill{height:100%;background:var(--orange);border-radius:9999px;transition:width .4s ease;}
+.sim-prog-text{font-size:.72rem;color:var(--muted);margin-top:4px;}
+.sim-next{background:var(--orange);color:#fff;border:none;border-radius:9999px;padding:11px 24px;font-size:.9rem;font-weight:700;display:flex;align-items:center;gap:8px;transition:var(--transition);cursor:pointer;}
+.sim-next:hover{background:var(--orange-dark);transform:translateY(-2px);}
+.sim-next:disabled{opacity:.35;cursor:not-allowed;transform:none;}
+.sim-send{background:#25D366;color:#fff;border:none;border-radius:9999px;padding:13px 26px;font-size:.95rem;font-weight:700;display:flex;align-items:center;gap:10px;transition:var(--transition);cursor:pointer;}
+.sim-send:hover{background:#1baa50;transform:translateY(-2px);}
+.sim-footer-cta{padding:20px 32px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.sim-footer-cta p{font-size:.85rem;color:var(--muted);}
+
+/* ─── SERVIÇOS ───────────────────────────── */
+.servicos-bg{background:var(--charcoal);}
+.servicos-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;gap:24px;flex-wrap:wrap;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.srv-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:var(--transition);position:relative;overflow:hidden;cursor:pointer;}
+.srv-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 0% 100%,var(--orange-glow),transparent 60%);opacity:0;transition:var(--transition);}
+.srv-card:hover{border-color:rgba(245,80,10,.4);transform:translateY(-4px);}
+.srv-card:hover::before{opacity:1;}
+.srv-icon{width:52px;height:52px;background:var(--orange-glow);border:1px solid rgba(245,80,10,.25);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;color:var(--orange);margin-bottom:20px;}
+.srv-card h3{font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:8px;}
+.srv-card p{font-size:.875rem;color:var(--muted);line-height:1.6;}
+.srv-link{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:600;color:var(--orange);margin-top:16px;transition:var(--transition);}
+.srv-link:hover{gap:10px;}
+
+/* ─── KITS ───────────────────────────────── */
+.kits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.kit-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:32px;position:relative;overflow:hidden;transition:var(--transition);}
+.kit-card:hover{border-color:rgba(245,80,10,.4);transform:translateY(-4px);}
+.kit-badge{position:absolute;top:20px;right:20px;background:var(--orange);color:#fff;font-size:.72rem;font-weight:800;padding:4px 10px;border-radius:9999px;letter-spacing:.05em;}
+.kit-icon-wrap{width:60px;height:60px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--orange);margin-bottom:20px;}
+.kit-card h3{font-family:var(--font-display);font-size:1.4rem;font-weight:800;margin-bottom:16px;}
+.kit-items{display:flex;flex-direction:column;gap:7px;margin-bottom:24px;}
+.kit-items span{font-size:.875rem;color:var(--muted);display:flex;align-items:center;gap:8px;}
+.kit-items span::before{content:'';width:14px;height:14px;border-radius:50%;background:var(--orange-glow);border:1.5px solid var(--orange);display:block;flex-shrink:0;}
+
+/* ─── DIFERENCIAIS ───────────────────────── */
+.dif-strip{background:var(--orange);padding:60px 0;}
+.dif-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;text-align:center;}
+.dif-item i{font-size:2rem;margin-bottom:14px;display:block;opacity:.9;}
+.dif-item h3{font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:6px;}
+.dif-item p{font-size:.85rem;opacity:.85;}
+
+/* ─── DEPOIMENTOS ────────────────────────── */
+.dep-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:12px;height:auto;}
+.dep-stars{color:var(--orange);font-size:.9rem;margin-bottom:14px;display:flex;gap:3px;}
+.dep-quote{font-size:.9rem;color:rgba(255,255,255,.8);line-height:1.65;margin-bottom:20px;font-style:italic;}
+.dep-name{font-weight:700;font-size:.9rem;}
+.dep-role{font-size:.8rem;color:var(--muted);}
+.swiper-pagination-bullet-active{background:var(--orange) !important;}
+
+/* ─── PORTFOLIO ──────────────────────────── */
+.portfolio-bg{background:var(--charcoal);}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px;}
+.filter-chip{background:rgba(255,255,255,.05);border:1.5px solid var(--border);border-radius:9999px;padding:7px 18px;font-size:.82rem;font-weight:600;color:var(--muted);transition:var(--transition);}
+.filter-chip.active,.filter-chip:hover{background:var(--orange);border-color:var(--orange);color:#fff;}
+.port-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
+.port-item{border-radius:var(--radius-sm);overflow:hidden;position:relative;aspect-ratio:4/3;background:var(--card-bg);}
+.port-item img{width:100%;height:100%;object-fit:cover;transition:.4s ease;}
+.port-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,13,.9),transparent 50%);opacity:0;transition:var(--transition);display:flex;align-items:flex-end;padding:18px;}
+.port-item:hover img{transform:scale(1.06);}
+.port-item:hover .port-overlay{opacity:1;}
+.port-overlay h4{font-size:.9rem;font-weight:700;}
+.port-overlay p{font-size:.78rem;color:var(--muted);}
+
+/* ─── BLOG ───────────────────────────────── */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.blog-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--transition);}
+.blog-card:hover{transform:translateY(-4px);border-color:rgba(245,80,10,.35);}
+.blog-img{height:180px;overflow:hidden;position:relative;background:var(--charcoal);}
+.blog-img img{width:100%;height:100%;object-fit:cover;transition:.4s ease;}
+.blog-card:hover .blog-img img{transform:scale(1.05);}
+.blog-cat{position:absolute;top:12px;left:12px;background:var(--orange);color:#fff;font-size:.7rem;font-weight:700;padding:4px 10px;border-radius:9999px;letter-spacing:.05em;text-transform:uppercase;}
+.blog-body{padding:22px;}
+.blog-body h3{font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:8px;line-height:1.25;}
+.blog-body p{font-size:.85rem;color:var(--muted);margin-bottom:14px;}
+.blog-link{font-size:.82rem;font-weight:700;color:var(--orange);display:inline-flex;align-items:center;gap:6px;transition:var(--transition);}
+.blog-link:hover{gap:10px;}
+
+/* ─── ORÇAMENTO ──────────────────────────── */
+.orc-section{background:var(--charcoal);}
+.orc-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.orc-info .section-title{margin-bottom:20px;}
+.orc-contacts{display:flex;flex-direction:column;gap:16px;margin-top:32px;}
+.orc-contact-item{display:flex;align-items:flex-start;gap:14px;padding:16px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--radius-sm);transition:var(--transition);}
+.orc-contact-item:hover{border-color:rgba(245,80,10,.3);background:var(--orange-glow);}
+.orc-contact-item i{font-size:1.1rem;color:var(--orange);margin-top:2px;width:20px;}
+.orc-contact-item strong{display:block;font-size:.875rem;font-weight:600;}
+.orc-contact-item span{font-size:.82rem;color:var(--muted);}
+.orc-form-card{background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:36px;}
+.orc-form-card h3{font-family:var(--font-display);font-size:1.6rem;font-weight:800;margin-bottom:24px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-field{margin-bottom:18px;}
+.form-field label{display:block;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.form-input{width:100%;background:rgba(255,255,255,.05);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;color:#fff;font-family:var(--font-body);font-size:.9rem;transition:var(--transition);}
+.form-input:focus{outline:none;border-color:var(--orange);background:rgba(245,80,10,.06);}
+.form-input::placeholder{color:var(--muted);}
+textarea.form-input{resize:vertical;min-height:110px;}
+
+/* ─── FOOTER ─────────────────────────────── */
+.footer{background:#0a0a0a;border-top:1px solid var(--border);padding:64px 0 32px;}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.4fr;gap:40px;margin-bottom:48px;}
+.footer-brand p{font-size:.875rem;color:var(--muted);margin-top:14px;line-height:1.7;max-width:240px;}
+.footer-social{display:flex;gap:10px;margin-top:20px;}
+.social-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--muted);transition:var(--transition);}
+.social-btn:hover{background:var(--orange);border-color:var(--orange);color:#fff;transform:translateY(-3px);}
+.footer-col h4{font-family:var(--font-display);font-size:.9rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;}
+.footer-col ul li{margin-bottom:10px;}
+.footer-col ul li a{font-size:.875rem;color:rgba(255,255,255,.7);transition:var(--transition);}
+.footer-col ul li a:hover{color:var(--orange);padding-left:4px;}
+.footer-contact-list li{display:flex;align-items:flex-start;gap:10px;font-size:.82rem;color:rgba(255,255,255,.7);margin-bottom:12px;}
+.footer-contact-list i{color:var(--orange);margin-top:2px;width:14px;}
+.footer-contact-list a{color:rgba(255,255,255,.7);transition:var(--transition);}
+.footer-contact-list a:hover{color:var(--orange);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;border-top:1px solid var(--border);flex-wrap:wrap;gap:12px;}
+.footer-bottom p,.footer-bottom a{font-size:.8rem;color:rgba(255,255,255,.3);}
+.footer-bottom a:hover{color:var(--orange);}
+.footer-links{display:flex;gap:20px;}
+
+/* ─── WHATSAPP FLOAT ─────────────────────── */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:800;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:#fff;box-shadow:0 8px 24px rgba(37,211,102,.4);transition:var(--transition);}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 12px 32px rgba(37,211,102,.55);}
+.wa-tooltip{position:absolute;right:64px;background:var(--charcoal);color:#fff;white-space:nowrap;font-size:.78rem;font-weight:600;padding:7px 12px;border-radius:9999px;border:1px solid var(--border);opacity:0;visibility:hidden;transition:var(--transition);}
+.wa-float:hover .wa-tooltip{opacity:1;visibility:visible;}
+
+/* ─── RESPONSIVO ─────────────────────────── */
+@media(max-width:1024px){
+  .services-grid{grid-template-columns:repeat(2,1fr);}
+  .kits-grid{grid-template-columns:repeat(2,1fr);}
+  .dif-grid{grid-template-columns:repeat(2,1fr);}
+  .blog-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .orc-grid{grid-template-columns:1fr;}
+  .cat-grid{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:768px){
+  .nav,.header-cta .btn-ghost{display:none;}
+  .hamburger{display:flex;}
+  .services-grid,.kits-grid,.blog-grid{grid-template-columns:1fr;}
+  .dif-grid{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .section-pad{padding:72px 0;}
+  .sim-body{padding:24px 20px;}
+  .sim-header{padding:20px;}
+  .sim-footer-cta{flex-direction:column;align-items:flex-start;}
+  .cat-grid{grid-template-columns:repeat(2,1fr);}
+  .prod-grid{grid-template-columns:repeat(3,1fr);}
+  .form-row{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+}
+@media(max-width:480px){
+  .cat-grid{grid-template-columns:repeat(2,1fr);}
+  .prod-grid{grid-template-columns:repeat(2,1fr);}
+  .dif-grid{grid-template-columns:1fr;}
+  .sim-nav{flex-direction:column;align-items:stretch;}
+  .sim-nav-left{justify-content:space-between;}
+  .orc-form-card{padding:24px 18px;}
+  .sim-steps-bar{gap:2px;}
+  .sim-step-pill{font-size:.65rem;padding:4px 8px;}
+}
+</style>
+</head>
+<body>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/5531984599525?text=Ol%C3%A1%2C%20Gr%C3%A1fica%20Castello!%20Gostaria%20de%20um%20or%C3%A7amento." class="wa-float" target="_blank" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+  <span class="wa-tooltip">Fale no WhatsApp</span>
+</a>
+
+<!-- Header -->
+<header class="header" id="header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="#home" class="logo">
+        <img src="imagens/logohorizontal.png" alt="Gráfica Castello">
+        <span class="logo-text">Gráfica <span>Castello</span></span>
+      </a>
+      <nav class="nav">
+        <a href="#home">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#portfolio">Portfólio</a>
+        <a href="#kits">Kits</a>
+        <a href="#depoimentos">Clientes</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <div class="header-cta">
+        <a href="#orcamento" class="btn btn-primary btn-sm">Orçamento</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#home" class="mob-link">Início</a>
+  <a href="#servicos" class="mob-link">Serviços</a>
+  <a href="#portfolio" class="mob-link">Portfólio</a>
+  <a href="#kits" class="mob-link">Kits</a>
+  <a href="#depoimentos" class="mob-link">Clientes</a>
+  <a href="#contato" class="mob-link">Contato</a>
+  <a href="#orcamento" class="btn btn-primary" style="margin-top:16px;justify-content:center;">Orçamento</a>
+</div>
+
+<main>
+
+<!-- ─── HERO ─────────────────────────────── -->
+<section id="home" class="hero">
+  <div class="banner-track" id="bannerTrack">
+
+    <div class="banner-slide active">
+      <div class="banner-bg"><img src="imagens/banner1.jpg" alt=""></div>
+      <div class="banner-content">
+        <span class="banner-eyebrow">Gráfica Castello · Contagem/MG</span>
+        <h1 class="banner-h1">Qualidade em<br><span class="highlight">cada detalhe.</span></h1>
+        <p class="banner-p">Impressão digital, cartões de visita, adesivos, banners e muito mais — com agilidade e qualidade superior.</p>
+        <div class="banner-btns">
+          <a href="#orcamento" class="btn btn-primary btn-lg">Solicitar Orçamento</a>
+          <a href="#portfolio" class="btn btn-ghost btn-lg">Ver Portfólio</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner-slide">
+      <div class="banner-bg"><img src="imagens/banner2.jpg" alt=""></div>
+      <div class="banner-content">
+        <span class="banner-eyebrow">Materiais & Adesivos</span>
+        <h1 class="banner-h1">Sua marca em<br><span class="highlight">qualquer formato.</span></h1>
+        <p class="banner-p">Lona, vinil, transparente, perfurado e decalque. Resistência e precisão para cada projeto.</p>
+        <div class="banner-btns">
+          <a href="#orcamento" class="btn btn-primary btn-lg">Quero um orçamento</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner-slide">
+      <div class="banner-bg"><img src="imagens/banner3.jpg" alt=""></div>
+      <div class="banner-content">
+        <span class="banner-eyebrow">Impressões de alto padrão</span>
+        <h1 class="banner-h1">Do arquivo<br><span class="highlight">à entrega.</span></h1>
+        <p class="banner-p">Papel couché, cartão, polaroid e fotos — com acabamento profissional e prazo garantido.</p>
+        <div class="banner-btns">
+          <a href="#servicos" class="btn btn-primary btn-lg">Nossos Serviços</a>
+          <a href="#orcamento" class="btn btn-ghost btn-lg">Orçamento</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner-controls">
+      <button class="banner-arrow" id="bannerPrev"><i class="fas fa-chevron-left"></i></button>
+      <div class="banner-dots" id="bannerDots">
+        <button class="banner-dot active" data-i="0"></button>
+        <button class="banner-dot" data-i="1"></button>
+        <button class="banner-dot" data-i="2"></button>
+      </div>
+      <button class="banner-arrow" id="bannerNext"><i class="fas fa-chevron-right"></i></button>
+      <span class="banner-count" id="bannerCount">01 / 03</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SIMULADOR ─────────────────────────── -->
+<section class="sim-section">
+  <div class="container">
+    <div class="sim-card">
+      <div class="sim-header">
+        <h2><i class="fas fa-calculator"></i> Simule seu orçamento</h2>
+        <div class="sim-steps-bar">
+          <span class="sim-step-pill active" id="pill1">1 · Categoria</span>
+          <span class="sim-step-pill" id="pill2">2 · Produto</span>
+          <span class="sim-step-pill" id="pill3">3 · Detalhes</span>
+          <span class="sim-step-pill" id="pill4">4 · Resumo</span>
+        </div>
+      </div>
+
+      <div class="sim-body">
+
+        <!-- ── STEP 1: 6 CATEGORIAS ── -->
+        <div class="sim-step active" id="s1">
+          <p style="font-size:.875rem;color:var(--muted);margin-bottom:22px;">Escolha a categoria do que você precisa:</p>
+          <div class="cat-grid">
+            <button class="cat-btn" data-cat="impressoes">
+              <div class="cat-icon"><i class="fas fa-print"></i></div>
+              <div class="cat-label">Impressões</div>
+              <div class="cat-sub">Papel, fotos, polaroid...</div>
+            </button>
+            <button class="cat-btn" data-cat="cartoes">
+              <div class="cat-icon"><i class="fas fa-id-card"></i></div>
+              <div class="cat-label">Cartões, Panfletos e Tags</div>
+              <div class="cat-sub">Visita, folder, panfleto...</div>
+            </button>
+            <button class="cat-btn" data-cat="adesivos">
+              <div class="cat-icon"><i class="fas fa-flag"></i></div>
+              <div class="cat-label">Adesivos, Lonas e Placas</div>
+              <div class="cat-sub">Vinil, lona, banner...</div>
+            </button>
+            <button class="cat-btn" data-cat="papelaria">
+              <div class="cat-icon"><i class="fas fa-briefcase"></i></div>
+              <div class="cat-label">Papelaria Corporativa</div>
+              <div class="cat-sub">Timbrado, bloco, crachá...</div>
+            </button>
+            <button class="cat-btn" data-cat="brindes">
+              <div class="cat-icon"><i class="fas fa-gift"></i></div>
+              <div class="cat-label">Brindes e Presentes</div>
+              <div class="cat-sub">Caneca, camiseta, quadro...</div>
+            </button>
+            <button class="cat-btn" data-cat="festa">
+              <div class="cat-icon"><i class="fas fa-birthday-cake"></i></div>
+              <div class="cat-label">Festa e Casamento</div>
+              <div class="cat-sub">Convites, tags, toppers...</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- ── STEP 2: SUBCATEGORIAS ── -->
+        <div class="sim-step" id="s2">
+          <div class="sim-breadcrumb" id="simBreadcrumb"></div>
+          <p style="font-size:.875rem;color:var(--muted);margin-bottom:18px;">Selecione o produto:</p>
+          <div class="prod-grid" id="subGrid"></div>
+          <div class="sim-nav" style="margin-top:20px;">
+            <div class="sim-nav-left">
+              <button class="sim-back" onclick="goStep(1)"><i class="fas fa-arrow-left"></i> Voltar</button>
+              <div>
+                <div class="sim-prog-bar"><div class="sim-prog-fill" style="width:25%"></div></div>
+                <div class="sim-prog-text">Etapa 2 de 4</div>
+              </div>
+            </div>
+            <button class="sim-next" id="btnS2" disabled onclick="goStep(3)">Próximo <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- ── STEP 3: DETALHES ── -->
+        <div class="sim-step" id="s3">
+          <div class="sim-breadcrumb" id="simBreadcrumb3"></div>
+          <div id="detailsContainer"></div>
+          <div class="sim-nav" style="margin-top:20px;">
+            <div class="sim-nav-left">
+              <button class="sim-back" onclick="goStep(2)"><i class="fas fa-arrow-left"></i> Voltar</button>
+              <div>
+                <div class="sim-prog-bar"><div class="sim-prog-fill" style="width:62%"></div></div>
+                <div class="sim-prog-text">Etapa 3 de 4</div>
+              </div>
+            </div>
+            <button class="sim-next" onclick="goStep(4)">Ver Resumo <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- ── STEP 4: RESUMO ── -->
+        <div class="sim-step" id="s4">
+          <div class="summary-box">
+            <h3><i class="fas fa-clipboard-check" style="margin-right:8px"></i>Resumo do pedido</h3>
+            <div id="summaryRows"></div>
+          </div>
+          <div class="field-group">
+            <span class="field-label">Observações (opcional)</span>
+            <textarea class="extra-textarea" id="extraMsg" placeholder="Arte pronta? Precisa urgente? Alguma cor específica? Escreva aqui..."></textarea>
+          </div>
+          <div class="sim-nav">
+            <div class="sim-nav-left">
+              <button class="sim-back" onclick="goStep(3)"><i class="fas fa-arrow-left"></i> Voltar</button>
+              <div>
+                <div class="sim-prog-bar"><div class="sim-prog-fill" style="width:100%"></div></div>
+                <div class="sim-prog-text">Etapa 4 de 4</div>
+              </div>
+            </div>
+            <button class="sim-send" onclick="sendWpp()"><i class="fab fa-whatsapp"></i> Enviar pelo WhatsApp</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="sim-footer-cta">
+        <p>Quer conversar diretamente ou tem um pedido fora do padrão?</p>
+        <a href="#orcamento" class="btn btn-outline-orange btn-sm">Orçamento Personalizado</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVIÇOS ──────────────────────────── -->
+<section id="servicos" class="section-pad servicos-bg">
+  <div class="container">
+    <div class="servicos-header">
+      <div>
+        <span class="tag">Nossos Serviços</span>
+        <h2 class="section-title">Soluções completas<br>em impressão digital</h2>
+      </div>
+      <p class="section-sub">Tecnologia avançada e materiais de alto padrão para qualquer projeto.</p>
+    </div>
+    <div class="services-grid">
+      <div class="srv-card" data-link="#orcamento">
+        <div class="srv-icon"><i class="fas fa-id-card"></i></div>
+        <h3>Cartões de Visita</h3>
+        <p>Papéis premium, acabamentos especiais e cores vibrantes que representam sua marca.</p>
+        <a href="#orcamento" class="srv-link">Solicitar orçamento <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="srv-card" data-link="#orcamento">
+        <div class="srv-icon"><i class="fas fa-newspaper"></i></div>
+        <h3>Flyers e Panfletos</h3>
+        <p>Materiais de divulgação impactantes para eventos, promoções e campanhas.</p>
+        <a href="#orcamento" class="srv-link">Solicitar orçamento <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="srv-card" data-link="#orcamento">
+        <div class="srv-icon"><i class="fas fa-flag"></i></div>
+        <h3>Banners e Lona</h3>
+        <p>Alta qualidade para fachadas, eventos, lojas e promoções de todo tipo.</p>
+        <a href="#orcamento" class="srv-link">Solicitar orçamento <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="srv-card" data-link="#orcamento">
+        <div class="srv-icon"><i class="fas fa-tag"></i></div>
+        <h3>Adesivos Personalizados</h3>
+        <p>Vinil, couché, transparente, perfurado e decalque — em qualquer formato.</p>
+        <a href="#orcamento" class="srv-link">Solicitar orçamento <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="srv-card" data-link="#orcamento">
+        <div class="srv-icon"><i class="fas fa-print"></i></div>
+        <h3>Impressões</h3>
+        <p>Papel comum, couché, cartão 180g/240g, fotos e polaroid com acabamento top.</p>
+        <a href="#orcamento" class="srv-link">Solicitar orçamento <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="srv-card" data-link="#orcamento">
+        <div class="srv-icon"><i class="fas fa-gift"></i></div>
+        <h3>Brindes Personalizados</h3>
+        <p>Tags, blocos, talões, receituários e muito mais para personalizar sua empresa.</p>
+        <a href="#orcamento" class="srv-link">Solicitar orçamento <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DIFERENCIAIS ──────────────────────── -->
+<section class="dif-strip">
+  <div class="container">
+    <div class="dif-grid">
+      <div class="dif-item"><i class="fas fa-medal"></i><h3>Alto Padrão</h3><p>Insumos e papéis de primeira linha</p></div>
+      <div class="dif-item"><i class="fas fa-microchip"></i><h3>Tecnologia</h3><p>Impressoras digitais de ponta</p></div>
+      <div class="dif-item"><i class="fas fa-headset"></i><h3>Atendimento</h3><p>Do orçamento à entrega, com você</p></div>
+      <div class="dif-item"><i class="fas fa-clock"></i><h3>Agilidade</h3><p>Prazos sempre cumpridos</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── KITS ──────────────────────────────── -->
+<section id="kits" class="section-pad">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px;">
+      <span class="tag">Economize com Kits</span>
+      <h2 class="section-title">Kits com desconto especial</h2>
+      <p class="section-sub" style="margin:0 auto;">Combine serviços e pague menos. Ótimo custo-benefício para eventos e empresas.</p>
+    </div>
+    <div class="kits-grid">
+      <div class="kit-card">
+        <span class="kit-badge">-25%</span>
+        <div class="kit-icon-wrap"><i class="fas fa-birthday-cake"></i></div>
+        <h3>Kit Festa</h3>
+        <div class="kit-items">
+          <span>50 Convites</span>
+          <span>30 Tags</span>
+          <span>10 Toppers</span>
+        </div>
+        <a href="https://wa.me/5531984599525?text=Olá!%20Tenho%20interesse%20no%20Kit%20Festa." class="btn btn-primary btn-sm" target="_blank">Quero este kit</a>
+      </div>
+      <div class="kit-card">
+        <span class="kit-badge">-30%</span>
+        <div class="kit-icon-wrap"><i class="fas fa-briefcase"></i></div>
+        <h3>Kit Empresário</h3>
+        <div class="kit-items">
+          <span>1.000 Cartões de Visita</span>
+          <span>50 Folhetos</span>
+          <span>5 Banners</span>
+        </div>
+        <a href="https://wa.me/5531984599525?text=Olá!%20Tenho%20interesse%20no%20Kit%20Empresário." class="btn btn-primary btn-sm" target="_blank">Quero este kit</a>
+      </div>
+      <div class="kit-card">
+        <span class="kit-badge">-20%</span>
+        <div class="kit-icon-wrap"><i class="fas fa-heart"></i></div>
+        <h3>Kit Casamento</h3>
+        <div class="kit-items">
+          <span>100 Convites</span>
+          <span>50 Lembrancinhas</span>
+          <span>20 Tags personalizadas</span>
+        </div>
+        <a href="https://wa.me/5531984599525?text=Olá!%20Tenho%20interesse%20no%20Kit%20Casamento." class="btn btn-primary btn-sm" target="_blank">Quero este kit</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PORTFÓLIO ─────────────────────────── -->
+<section id="portfolio" class="section-pad portfolio-bg">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;flex-wrap:wrap;gap:20px;">
+      <div>
+        <span class="tag">Trabalhos Realizados</span>
+        <h2 class="section-title">O que já produzimos</h2>
+      </div>
+      <a href="https://instagram.com/graficacastello" target="_blank" class="btn btn-outline-orange btn-sm"><i class="fab fa-instagram"></i> Ver no Instagram</a>
+    </div>
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-chip active" data-f="all">Todos</button>
+      <button class="filter-chip" data-f="cartoes">Cartões</button>
+      <button class="filter-chip" data-f="flyers">Flyers</button>
+      <button class="filter-chip" data-f="banners">Banners</button>
+      <button class="filter-chip" data-f="adesivos">Adesivos</button>
+      <button class="filter-chip" data-f="convites">Convites</button>
+    </div>
+    <div class="port-grid" id="portGrid"></div>
+  </div>
+</section>
+
+<!-- ─── DEPOIMENTOS ───────────────────────── -->
+<section id="depoimentos" class="section-pad">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px;">
+      <span class="tag">Clientes Satisfeitos</span>
+      <h2 class="section-title">O que falam sobre nós</h2>
+    </div>
+    <div class="swiper depSwiper">
+      <div class="swiper-wrapper">
+        <!-- 14 depoimentos no total -->
+        <div class="dep-card swiper-slide">
+          <div class="dep-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="dep-quote">"Qualidade incrível e prazo super cumprido. Os cartões de visita ficaram perfeitos — exatamente o que eu precisava!"</p>
+          <div class="dep-name">Ana Silva</div><div class="dep-role">Designer Gráfico</div>
+        </div>
+        <div class="dep-card swiper-slide">
+          <div class="dep-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="dep-quote">"Atendimento nota 10! Fizeram meus banners para o evento e ficaram lindos. Indico para todo mundo."</p>
+          <div class="dep-name">Carlos Mendes</div><div class="dep-role">Empresário</div>
+        </div>
+        <div class="dep-card swiper-slide">
+          <div class="dep-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="dep-quote">"Os convites do meu casamento ficaram dos sonhos! Agradeço toda a equipe da Castello pela dedicação."</p>
+          <div class="dep-name">Mariana Costa</div><div class="dep-role">Noiva</div>
+        </div>
+        <div class="dep-card swiper-slide">
+          <div class="dep-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="dep-quote">"Fiz meus adesivos e ficaram excelentes! Qualidade no vinil e acabamento impecável. Voltarei sempre."</p>
+          <div class="dep-name">Roberto Lima</div><div class="dep-role">Loja de Roupas</div>
+        </div>
+        <div class="dep-card swiper-slide">
+          <div class="dep-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="dep-quote">"Precisava de 500 panfletos em 24h e eles entregaram antes do prazo. Muito profissionais!"</p>
+          <div class="dep-name">Fernanda Rocha</div><div class="dep-role">Organizadora de Eventos</div>
+        </div>
+        <div class="dep-card swiper-slide">
+          <div class="dep-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="dep-quote">"Gráfica de confiança. Já imprimi folders, cartões e banner, tudo com excelente custo-benefício."</p>
+          <div class="dep-name">Thiago Almeida</div><div class="dep-role">Publicitário</div>
+        </div>
+        <div class="dep-card swiper-slide">
+          <div class="dep-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="dep-quote">"Amei as tags personalizadas para minha marca. Chegou tudo certinho e com um brilho especial."</p>
+          <div class="dep-name">Juliana Nogueira</div><div class="dep-role">Artesã</div>
+        </div>
+        <div class="dep-card swiper-slide">
+          <div class="dep-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="dep-quote">"Atendimento rápido e cordial. Me orientaram sobre o tipo de papel ideal para meu catálogo."</p>
+          <div class="dep-name">Rafael Souza</div><div class="dep-role">Fotógrafo</div>
+        </div>
+        <div class="dep-card swiper-slide">
+          <div class="dep-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="dep-quote">"Os adesivos para minha loja ficaram perfeitos, com corte preciso e cores vivas. Recomendo!"</p>
+          <div class="dep-name">Patrícia Oliveira</div><div class="dep-role">Design de Interiores</div>
+        </div>
+        <div class="dep-card swiper-slide">
+          <div class="dep-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="dep-quote">"Fizeram meus blocos de pedido com muita qualidade e entregaram antes do combinado."</p>
+          <div class="dep-name">Luciana Ferreira</div><div class="dep-role">Gerente de Vendas</div>
+        </div>
+        <div class="dep-card swiper-slide">
+          <div class="dep-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="dep-quote">"Excelente custo para cartões de visita com verniz localizado. Ficaram luxuosos!"</p>
+          <div class="dep-name">Eduardo Martins</div><div class="dep-role">Consultor</div>
+        </div>
+        <div class="dep-card swiper-slide">
+          <div class="dep-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="dep-quote">"Já indiquei para vários amigos. A Castello capricha no acabamento e no atendimento."</p>
+          <div class="dep-name">Beatriz Lopes</div><div class="dep-role">Coordenadora de Marketing</div>
+        </div>
+        <div class="dep-card swiper-slide">
+          <div class="dep-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="dep-quote">"Imprimi lonas grandes para uma feira e o resultado foi surpreendente. Cores vivas e material resistente."</p>
+          <div class="dep-name">Gustavo Henrique</div><div class="dep-role">Expositor</div>
+        </div>
+        <div class="dep-card swiper-slide">
+          <div class="dep-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="dep-quote">"Desde que descobri a Gráfica Castello, nunca mais precisei procurar outro lugar. São muito confiáveis."</p>
+          <div class="dep-name">Cláudia Mendonça</div><div class="dep-role">Empresária</div>
+        </div>
+      </div>
+      <div class="swiper-pagination" style="margin-top:28px;position:relative;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BLOG ──────────────────────────────── -->
+<section id="blog" class="section-pad" style="background:var(--charcoal);">
+  <div class="container">
+    <div style="margin-bottom:48px;">
+      <span class="tag">Dicas e Conteúdo</span>
+      <h2 class="section-title">Últimos do blog</h2>
+    </div>
+    <div class="blog-grid">
+      <article class="blog-card">
+        <div class="blog-img"><img src="imagens/blog/post1.jpg" alt="Papel"><span class="blog-cat">Dicas</span></div>
+        <div class="blog-body">
+          <h3>Qual papel escolher para seu cartão de visita?</h3>
+          <p>Conheça os tipos de papel e acabamentos para impressionar seus clientes.</p>
+          <a href="#" class="blog-link">Ler mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+      <article class="blog-card">
+        <div class="blog-img"><img src="imagens/blog/post2.jpg" alt="Erros"><span class="blog-cat">Tutoriais</span></div>
+        <div class="blog-body">
+          <h3>7 erros que encarecem sua impressão (e como evitar)</h3>
+          <p>Economize dinheiro e tempo com essas dicas essenciais de produção.</p>
+          <a href="#" class="blog-link">Ler mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+      <article class="blog-card">
+        <div class="blog-img"><img src="imagens/blog/post3.jpg" alt="Arquivo"><span class="blog-cat">Técnico</span></div>
+        <div class="blog-body">
+          <h3>Como preparar arquivo para impressão digital</h3>
+          <p>Guia completo: resolução, sangria, cores e formatos aceitos.</p>
+          <a href="#" class="blog-link">Ler mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ORÇAMENTO PERSONALIZADO ───────────── -->
+<section id="orcamento" class="section-pad orc-section">
+  <div class="container">
+    <div class="orc-grid">
+      <div class="orc-info">
+        <span class="tag">Solicite agora</span>
+        <h2 class="section-title">Pronto para dar<br>vida ao seu projeto?</h2>
+        <p style="color:var(--muted);font-size:.95rem;">Preencha ao lado ou fale pelo WhatsApp. Respondemos em até 2 horas!</p>
+        <div class="orc-contacts">
+          <a href="https://wa.me/5531984599525" class="orc-contact-item" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <div><strong>WhatsApp</strong><span>(31) 98459-9525</span></div>
+          </a>
+          <a href="#" class="orc-contact-item">
+            <i class="far fa-envelope"></i>
+            <div><strong>E-mail</strong><span>contato@graficacastello.com.br</span></div>
+          </a>
+          <a href="https://instagram.com/graficacastello" class="orc-contact-item" target="_blank">
+            <i class="fab fa-instagram"></i>
+            <div><strong>Instagram</strong><span>@graficacastello</span></div>
+          </a>
+          <a href="https://maps.app.goo.gl/WvrbxoYFcuMPiWpz7" class="orc-contact-item" target="_blank">
+            <i class="fas fa-map-marker-alt"></i>
+            <div><strong>Endereço</strong><span>Rua Délio da Consolação Rocha, 153 Loja – Santa Helena, Contagem/MG</span></div>
+          </a>
+          <div class="orc-contact-item">
+            <i class="far fa-clock"></i>
+            <div><strong>Horário</strong><span>Seg–Sex: 8h às 18h &nbsp;|&nbsp; Sáb: 8h às 12h</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="orc-form-card">
+        <h3>Orçamento Personalizado</h3>
+        <div class="form-row">
+          <div class="form-field"><label>Nome *</label><input class="form-input" id="orcNome" type="text" placeholder="Seu nome"></div>
+          <div class="form-field"><label>WhatsApp *</label><input class="form-input" id="orcWpp" type="tel" placeholder="(31) 99999-9999"></div>
+        </div>
+        <div class="form-field">
+          <label>Tipo de serviço</label>
+          <select class="form-input" id="orcServ">
+            <option value="">Selecione...</option>
+            <option>Cartão de Visitas</option><option>Panfleto</option><option>Tag de Agradecimento</option>
+            <option>Tag para Roupas</option><option>Timbrado</option><option>Receituário</option>
+            <option>Bloco</option><option>Rifas</option><option>Talão</option>
+            <option>Adesivo</option><option>Lona / Banner</option><option>Impressões</option><option>Outro</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Detalhes do projeto</label>
+          <textarea class="form-input" id="orcDesc" placeholder="Quantidade, tamanho, cores, prazo, observações..."></textarea>
+        </div>
+        <button onclick="sendCustom()" class="btn btn-whatsapp" style="width:100%;justify-content:center;font-size:.95rem;padding:15px;">
+          <i class="fab fa-whatsapp"></i> Enviar pelo WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────── -->
+<footer id="contato" class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="logo"><img src="imagens/logohorizontal.png" alt="Gráfica Castello"><span class="logo-text">Gráfica <span>Castello</span></span></a>
+        <p>Qualidade e criatividade em cada detalhe. Impressão digital em Contagem/MG.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/graficacastello" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/5531984599525" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-btn"><i class="far fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Links Rápidos</h4>
+        <ul>
+          <li><a href="#home">Início</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#portfolio">Portfólio</a></li>
+          <li><a href="#kits">Kits</a></li>
+          <li><a href="#orcamento">Orçamento</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="#orcamento">Cartões de Visita</a></li>
+          <li><a href="#orcamento">Flyers e Panfletos</a></li>
+          <li><a href="#orcamento">Banners e Lona</a></li>
+          <li><a href="#orcamento">Adesivos</a></li>
+          <li><a href="#orcamento">Impressões</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul class="footer-contact-list">
+          <li><i class="fas fa-map-marker-alt"></i><a href="https://maps.app.goo.gl/WvrbxoYFcuMPiWpz7" target="_blank">Rua Délio da Consolação Rocha, 153 Loja – Santa Helena, Contagem/MG</a></li>
+          <li><i class="fab fa-whatsapp"></i><a href="https://wa.me/5531984599525" target="_blank">(31) 98459-9525</a></li>
+          <li><i class="far fa-envelope"></i><a href="#">contato@graficacastello.com.br</a></li>
+          <li><i class="fab fa-instagram"></i><a href="https://instagram.com/graficacastello" target="_blank">@graficacastello</a></li>
+          <li><i class="far fa-clock"></i><span>Seg–Sex: 8h–18h &nbsp;|&nbsp; Sáb: 8h–12h</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Gráfica Castello. Todos os direitos reservados.</p>
+      <div class="footer-links"><a href="#">Privacidade</a><a href="#">Termos</a></div>
+    </div>
+  </div>
+</footer>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+/* ── HEADER ── */
+var hdr=document.getElementById('header');
+window.addEventListener('scroll',function(){hdr.classList.toggle('solid',window.scrollY>60);});
+
+/* ── HAMBURGER ── */
+var ham=document.getElementById('hamburger'),mob=document.getElementById('mobileNav');
+ham.addEventListener('click',function(){ham.classList.toggle('open');mob.classList.toggle('open');document.body.style.overflow=mob.classList.contains('open')?'hidden':'';});
+document.querySelectorAll('.mob-link').forEach(function(l){l.addEventListener('click',function(){ham.classList.remove('open');mob.classList.remove('open');document.body.style.overflow='';});});
+
+/* ── BANNER ── */
+(function(){
+  var slides=document.querySelectorAll('.banner-slide'),dots=document.querySelectorAll('.banner-dot'),count=document.getElementById('bannerCount'),cur=0,t;
+  function go(n){slides[cur].classList.remove('active');dots[cur].classList.remove('active');cur=(n+slides.length)%slides.length;slides[cur].classList.add('active');dots[cur].classList.add('active');count.textContent=String(cur+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');}
+  function start(){clearInterval(t);t=setInterval(function(){go(cur+1);},5000);}
+  document.getElementById('bannerNext').onclick=function(){go(cur+1);start();};
+  document.getElementById('bannerPrev').onclick=function(){go(cur-1);start();};
+  dots.forEach(function(d){d.onclick=function(){go(parseInt(this.dataset.i));start();};});
+  start();
+})();
+
+/* ── CARDS DE SERVIÇOS CLICÁVEIS ── */
+document.querySelectorAll('.srv-card').forEach(function(card){
+  card.addEventListener('click', function(e){
+    if(e.target.closest('.srv-link')) return; // se clicou no link interno, não duplica
+    window.location.hash = card.getAttribute('data-link') || '#orcamento';
+  });
+});
+
+/* ── SIMULADOR ── */
+var sim={categoria:'',catName:'',produto:'',prodName:'',cor:'',faces:'',tamanho:'',tamCustom:'',qtd:'',qtdCustom:''};
+
+// Catálogo completo
+var catalog={
+  impressoes:{
+    label:'Impressoes',
+    items:[
+      {id:'p-comum',icon:'fas fa-print',label:'Papel Comum'},
+      {id:'apostila',icon:'fas fa-book-open',label:'Apostilas'},
+      {id:'imp-a1',icon:'fas fa-expand',label:'Impressao A1'},
+      {id:'imp-a2',icon:'fas fa-expand-alt',label:'Impressao A2'},
+      {id:'imp-a3',icon:'fas fa-file',label:'Impressao A3'},
+      {id:'couche-250',icon:'fas fa-layer-group',label:'Couche 250g'},
+      {id:'cartao-180',icon:'fas fa-square',label:'Cartao 180g'},
+      {id:'cartao-240',icon:'fas fa-clone',label:'Cartao 240g'},
+      {id:'texturado',icon:'fas fa-border-all',label:'Papel Texturado'},
+      {id:'fotos',icon:'fas fa-camera',label:'Fotos'},
+      {id:'polaroid',icon:'fas fa-camera-retro',label:'Polaroid'},
+      {id:'colorida',icon:'fas fa-palette',label:'Impressao Colorida'},
+      {id:'pb',icon:'fas fa-adjust',label:'Preto e Branco'},
+      {id:'fotografico',icon:'fas fa-image',label:'Papel Fotografico'},
+      {id:'adesivo-imp',icon:'fas fa-sticky-note',label:'Papel Adesivo'},
+      {id:'ampliacao',icon:'fas fa-search-plus',label:'Ampliacao de Imagens'}
+    ]
+  },
+  cartoes:{
+    label:'Cartoes, Panfletos e Tags',
+    items:[
+      {id:'cv-verniz-t',icon:'fas fa-id-card',label:'Cartao Verniz Total'},
+      {id:'cv-verniz-l',icon:'fas fa-id-card',label:'Cartao Verniz Localizado'},
+      {id:'panfleto-10',icon:'fas fa-newspaper',label:'Panfleto 10x14cm'},
+      {id:'panfleto-20',icon:'fas fa-newspaper',label:'Panfleto 20x14cm'},
+      {id:'folder',icon:'fas fa-folder',label:'Folder com Dobra'},
+      {id:'tag-agr',icon:'fas fa-heart',label:'Tag Agradecimento'},
+      {id:'tag-roupas',icon:'fas fa-tshirt',label:'Tag para Roupas'},
+      {id:'fidelidade',icon:'fas fa-star',label:'Cartao Fidelidade'}
+    ]
+  },
+  adesivos:{
+    label:'Adesivos, Lonas e Placas',
+    items:[
+      {id:'ad-papel',icon:'fas fa-sticky-note',label:'Adesivo Papel'},
+      {id:'ad-vinil',icon:'fas fa-tint',label:'Adesivo Vinil'},
+      {id:'ad-transp',icon:'fas fa-circle',label:'Adesivo Transparente'},
+      {id:'ad-perf',icon:'fas fa-dot-circle',label:'Adesivo Perfurado'},
+      {id:'decalque',icon:'fas fa-stamp',label:'Decalque'},
+      {id:'ad-vitrine',icon:'fas fa-store',label:'Adesivo p/ Vitrine'},
+      {id:'lona',icon:'fas fa-flag',label:'Lona'},
+      {id:'banner',icon:'fas fa-image',label:'Banner'},
+      {id:'oxford',icon:'fas fa-wind',label:'Tecido Oxford'},
+      {id:'etiquetas',icon:'fas fa-tags',label:'Etiquetas e Rotulos'},
+      {id:'faixa',icon:'fas fa-grip-lines',label:'Faixa em Lona/Tecido'},
+      {id:'placa-pvc',icon:'fas fa-th-large',label:'Placa em PVC'},
+      {id:'placa-ps',icon:'fas fa-th',label:'Placa em PS'},
+      {id:'windbanner',icon:'fas fa-location-arrow',label:'Windbanner'}
+    ]
+  },
+  papelaria:{
+    label:'Papelaria Corporativa',
+    items:[
+      {id:'timbrado',icon:'fas fa-file-alt',label:'Timbrado'},
+      {id:'receituario',icon:'fas fa-prescription',label:'Receituario'},
+      {id:'pasta',icon:'fas fa-folder-open',label:'Pastas'},
+      {id:'bloco-pedido',icon:'fas fa-clipboard',label:'Bloco de Pedido'},
+      {id:'talao',icon:'fas fa-receipt',label:'Talao'},
+      {id:'envelope',icon:'fas fa-envelope',label:'Envelope Personalizado'},
+      {id:'cracha',icon:'fas fa-id-badge',label:'Cracha'},
+      {id:'ficha',icon:'fas fa-file-invoice',label:'Ficha'},
+      {id:'os',icon:'fas fa-tools',label:'Ordem de Servico'},
+      {id:'bloco-anot',icon:'fas fa-book',label:'Bloco de Anotacoes'},
+      {id:'agenda',icon:'fas fa-calendar',label:'Agenda Personalizada'},
+      {id:'caderno',icon:'fas fa-book-open',label:'Caderno Personalizado'}
+    ]
+  },
+  brindes:{
+    label:'Brindes e Presentes',
+    items:[
+      {id:'caneca',icon:'fas fa-mug-hot',label:'Caneca'},
+      {id:'squeeze',icon:'fas fa-tint',label:'Squeeze'},
+      {id:'chaveiro',icon:'fas fa-key',label:'Chaveiro'},
+      {id:'camiseta',icon:'fas fa-tshirt',label:'Camiseta'},
+      {id:'azulejo',icon:'fas fa-th',label:'Azulejo'},
+      {id:'mousepad',icon:'fas fa-mouse',label:'Mousepad'},
+      {id:'copo',icon:'fas fa-glass-martini-alt',label:'Copo'},
+      {id:'garrafa',icon:'fas fa-wine-bottle',label:'Garrafa'},
+      {id:'quadro',icon:'fas fa-image',label:'Quadro'},
+      {id:'placa-dec',icon:'fas fa-award',label:'Placa Decorativa'},
+      {id:'kit-presente',icon:'fas fa-gift',label:'Kit Presente'}
+    ]
+  },
+  festa:{
+    label:'Festa e Casamento',
+    items:[
+      {id:'convite',icon:'fas fa-envelope-open-text',label:'Convites Personalizados'},
+      {id:'conv-casamento',icon:'fas fa-rings-wedding',label:'Convite de Casamento'},
+      {id:'conv-aniv',icon:'fas fa-birthday-cake',label:'Convite de Aniversario'},
+      {id:'conv-infantil',icon:'fas fa-baby',label:'Convite Infantil'},
+      {id:'tag-lemb',icon:'fas fa-tag',label:'Tag Lembrancinha'},
+      {id:'rotulo',icon:'fas fa-tags',label:'Rotulos Personalizados'},
+      {id:'topper',icon:'fas fa-crown',label:'Topper de Bolo'},
+      {id:'caixinha',icon:'fas fa-box-open',label:'Caixinha Personalizada'},
+      {id:'sacolinha',icon:'fas fa-shopping-bag',label:'Sacolinhas'},
+      {id:'placa-div',icon:'fas fa-laugh-wink',label:'Placas Divertidas'},
+      {id:'menu',icon:'fas fa-utensils',label:'Menu de Mesa'},
+      {id:'marcador-lugar',icon:'fas fa-bookmark',label:'Marcador de Lugar'},
+      {id:'numero-mesa',icon:'fas fa-sort-numeric-up',label:'Numero de Mesa'},
+      {id:'lembrancas',icon:'fas fa-gift',label:'Lembrancinhas'}
+    ]
+  }
+};
+
+// Configs de detalhes por grupo de produto
+var detailsCfg={
+  impressoes:{
+    cor:['Colorido','Preto e Branco'],
+    faces:['Frente','Frente e Verso'],
+    tamanho:['A4','A3','A2','A1','Outro'],
+    tamanhoNote:'A1 e A2: apenas papel comum, somente frente',
+    qtdLivre:true
+  },
+  cartoes:{
+    cor:['Colorido Frente','Colorido Frente e Verso','P&B + Colorido F/V'],
+    tamanho:['Padrao','10x15cm','20x14cm','Outro'],
+    qtd:['100','250','500','1.000','2.500','5.000','Outro']
+  },
+  adesivos:{
+    cor:['Colorido'],
+    tamanho:['Personalizado','3x3cm','4x4cm','5x5cm','6x6cm','7x7cm'],
+    qtd:['100','250','500','1.000','2.500','5.000','Outro']
+  },
+  papelaria:{
+    cor:['Colorido Frente','Colorido Frente e Verso','P&B + Colorido F/V'],
+    tamanho:['Padrao','A4','A5','Outro'],
+    qtd:['100','250','500','1.000','2.500','5.000','Outro']
+  },
+  brindes:{
+    qtd:['1','5','10','25','50','100','Outro'],
+    note:'Para brindes, descreva a arte e material no campo de observacoes.'
+  },
+  festa:{
+    cor:['Colorido'],
+    tamanho:['Padrao','Personalizado'],
+    qtd:['25','50','100','200','Outro']
+  }
+};
+
+// Click em categoria (step1 → step2)
+document.querySelectorAll('.cat-btn').forEach(function(b){
+  b.onclick=function(){
+    sim.categoria=this.dataset.cat;
+    sim.catName=catalog[sim.categoria].label;
+    sim.produto='';sim.prodName='';sim.cor='';sim.faces='';sim.tamanho='';sim.tamCustom='';sim.qtd='';sim.qtdCustom='';
+    renderSubGrid();
+    goStep(2);
+  };
+});
+
+function renderSubGrid(){
+  var g=document.getElementById('subGrid');
+  var items=catalog[sim.categoria].items;
+  g.innerHTML=items.map(function(it){
+    return'<button class="prod-btn" data-id="'+it.id+'" data-label="'+it.label+'"><i class="'+it.icon+'"></i>'+it.label+'</button>';
+  }).join('');
+  g.querySelectorAll('.prod-btn').forEach(function(b){
+    b.onclick=function(){
+      g.querySelectorAll('.prod-btn').forEach(function(x){x.classList.remove('sel');});
+      this.classList.add('sel');
+      sim.produto=this.dataset.id;
+      sim.prodName=this.dataset.label;
+      document.getElementById('btnS2').disabled=false;
+    };
+  });
+  // breadcrumb
+  document.getElementById('simBreadcrumb').innerHTML='<span class="bc-cat">'+sim.catName+'</span>';
+}
+
+function renderDetails(){
+  var cfg=detailsCfg[sim.categoria]||{};
+  var html='';
+
+  // Breadcrumb
+  document.getElementById('simBreadcrumb3').innerHTML='<span class="bc-cat">'+sim.catName+'</span><span class="bc-sep">/</span><span>'+sim.prodName+'</span>';
+
+  if(cfg.note){
+    html+='<div style="background:rgba(245,80,10,.1);border:1px solid rgba(245,80,10,.25);border-radius:10px;padding:14px;font-size:.85rem;color:#ccc;margin-bottom:20px;">'+cfg.note+'</div>';
+  }
+
+  if(cfg.cor&&cfg.cor.length){
+    html+='<div class="field-group"><span class="field-label">Cor / Impressao</span><div class="chip-row" id="chipsCor">';
+    cfg.cor.forEach(function(v){html+='<button class="chip" data-f="cor" data-v="'+v+'">'+v+'</button>';});
+    html+='</div></div>';
+  }
+
+  if(cfg.faces){
+    html+='<div class="field-group"><span class="field-label">Faces</span><div class="chip-row" id="chipsFaces">';
+    cfg.faces.forEach(function(v){html+='<button class="chip" data-f="faces" data-v="'+v+'">'+v+'</button>';});
+    html+='</div></div>';
+  }
+
+  if(cfg.tamanho){
+    var note=cfg.tamanhoNote?'<span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:.78rem;color:var(--muted)"> — '+cfg.tamanhoNote+'</span>':'';
+    html+='<div class="field-group"><span class="field-label">Tamanho'+note+'</span><div class="chip-row" id="chipsTam">';
+    cfg.tamanho.forEach(function(v){html+='<button class="chip" data-f="tamanho" data-v="'+v+'">'+v+'</button>';});
+    html+='</div><input class="chip-input hidden" id="tamCustom" type="text" placeholder="Digite o tamanho..."></div>';
+  }
+
+  if(cfg.qtdLivre){
+    html+='<div class="field-group"><span class="field-label">Quantidade</span><input class="chip-input" id="qtdLivre" type="number" placeholder="Quantas unidades?" min="1" style="margin-top:0"></div>';
+  } else if(cfg.qtd){
+    html+='<div class="field-group"><span class="field-label">Quantidade</span><div class="chip-row" id="chipsQtd">';
+    cfg.qtd.forEach(function(v){html+='<button class="chip" data-f="qtd" data-v="'+v+'">'+v+'</button>';});
+    html+='</div><input class="chip-input hidden" id="qtdCustom" type="text" placeholder="Digite a quantidade..."></div>';
+  }
+
+  document.getElementById('detailsContainer').innerHTML=html;
+
+  // Bind chip clicks
+  document.querySelectorAll('#detailsContainer .chip').forEach(function(c){
+    c.onclick=function(){
+      var f=this.dataset.f,v=this.dataset.v;
+      this.closest('.chip-row').querySelectorAll('.chip').forEach(function(x){x.classList.remove('sel');});
+      this.classList.add('sel');
+      sim[f]=v;
+      if(f==='tamanho'){
+        var el=document.getElementById('tamCustom');
+        if(el){el.classList.toggle('hidden',v!=='Outro'&&v!=='Personalizado');}
+      }
+      if(f==='qtd'){
+        var el2=document.getElementById('qtdCustom');
+        if(el2){el2.classList.toggle('hidden',v!=='Outro');}
+      }
+    };
+  });
+  var tc=document.getElementById('tamCustom');if(tc)tc.oninput=function(){sim.tamCustom=this.value;};
+  var qc=document.getElementById('qtdCustom');if(qc)qc.oninput=function(){sim.qtdCustom=this.value;};
+  var ql=document.getElementById('qtdLivre');if(ql)ql.oninput=function(){sim.qtd=this.value;};
+}
+
+function setStepPills(n){['pill1','pill2','pill3','pill4'].forEach(function(id,i){document.getElementById(id).classList.toggle('active',i+1===n);});}
+
+function goStep(n){
+  if(n===3){renderDetails();}
+  if(n===4){buildSummary();}
+  document.querySelectorAll('.sim-step').forEach(function(s){s.classList.remove('active');});
+  document.getElementById('s'+n).classList.add('active');
+  setStepPills(n);
+}
+
+function buildSummary(){
+  var tamanhoFinal=sim.tamanho==='Outro'||sim.tamanho==='Personalizado'?(sim.tamCustom||sim.tamanho):sim.tamanho;
+  var qtdFinal=sim.qtd==='Outro'?(sim.qtdCustom||'—'):(sim.qtd||'—');
+  var rows=[
+    ['Categoria', sim.catName||'—'],
+    ['Produto', sim.prodName||'—']
+  ];
+  if(sim.cor)rows.push(['Cor / Impressao',sim.cor]);
+  if(sim.faces)rows.push(['Faces',sim.faces]);
+  if(tamanhoFinal)rows.push(['Tamanho',tamanhoFinal]);
+  rows.push(['Quantidade',qtdFinal]);
+  document.getElementById('summaryRows').innerHTML=rows.map(function(r){
+    return'<div class="summary-row"><span>'+r[0]+'</span><span>'+r[1]+'</span></div>';
+  }).join('');
+}
+
+function sendWpp(){
+  var tamanhoFinal=sim.tamanho==='Outro'||sim.tamanho==='Personalizado'?(sim.tamCustom||sim.tamanho):sim.tamanho;
+  var qtdFinal=sim.qtd==='Outro'?(sim.qtdCustom||'—'):(sim.qtd||'—');
+  var ex=document.getElementById('extraMsg').value.trim();
+
+  var linhas=[
+    'Ola, Grafica Castello! Gostaria de um orcamento.',
+    '',
+    'Categoria: '+sim.catName,
+    'Produto: '+sim.prodName
+  ];
+  if(sim.cor)linhas.push('Cor / Impressao: '+sim.cor);
+  if(sim.faces)linhas.push('Faces: '+sim.faces);
+  if(tamanhoFinal)linhas.push('Tamanho: '+tamanhoFinal);
+  linhas.push('Quantidade: '+qtdFinal);
+  if(ex){linhas.push('');linhas.push('Observacoes: '+ex);}
+  linhas.push('');linhas.push('Aguardo retorno. Obrigado!');
+
+  window.open('https://wa.me/5531984599525?text='+encodeURIComponent(linhas.join('\n')),'_blank');
+}
+
+function sendCustom(){
+  var n=document.getElementById('orcNome').value.trim();
+  var w=document.getElementById('orcWpp').value.trim();
+  var s=document.getElementById('orcServ').value;
+  var d=document.getElementById('orcDesc').value.trim();
+  if(!n||!w){alert('Por favor, preencha nome e WhatsApp.');return;}
+  var linhas=[
+    'Ola, Grafica Castello! Gostaria de um orcamento personalizado.',
+    '',
+    'Nome: '+n,
+    'WhatsApp: '+w
+  ];
+  if(s)linhas.push('Servico: '+s);
+  if(d){linhas.push('');linhas.push('Detalhes: '+d);}
+  linhas.push('');linhas.push('Aguardo retorno. Obrigado!');
+  window.open('https://wa.me/5531984599525?text='+encodeURIComponent(linhas.join('\n')),'_blank');
+}
+
+/* ── PORTFOLIO ── */
+var portData=[{c:'cartoes',t:'Cartão de Visita Premium',i:'portfolio/cartao1.jpg',d:'Acabamento verniz localizado'},{c:'cartoes',t:'Cartão Criativo',i:'portfolio/cartao2.jpg',d:'Corte especial'},{c:'flyers',t:'Flyer Promocional',i:'portfolio/flyer1.jpg',d:'Papel couchê 150g'},{c:'flyers',t:'Panfleto Evento',i:'portfolio/flyer2.jpg',d:'Formato A5'},{c:'banners',t:'Banner Expositor',i:'portfolio/banner1.jpg',d:'Lona 440g'},{c:'banners',t:'Faixa de Evento',i:'portfolio/banner2.jpg',d:'3x0.90m'},{c:'adesivos',t:'Adesivo Recortado',i:'portfolio/adesivo1.jpg',d:'Vinil'},{c:'adesivos',t:'Etiqueta Personalizada',i:'portfolio/adesivo2.jpg',d:'Formato livre'},{c:'convites',t:'Convite Casamento',i:'portfolio/convite1.jpg',d:'Papel reciclado'},{c:'convites',t:'Convite Aniversário',i:'portfolio/convite2.jpg',d:'Com envelope'}];
+function renderPort(f){var g=document.getElementById('portGrid');var items=f==='all'?portData:portData.filter(function(x){return x.c===f;});g.innerHTML=items.map(function(x){return'<div class="port-item"><img src="imagens/'+x.i+'" alt="'+x.t+'" onerror="this.src=\'https://placehold.co/400x300/1D1D1D/888?text='+encodeURIComponent(x.t)+'\'" loading="lazy"><div class="port-overlay"><div><h4>'+x.t+'</h4><p>'+x.d+'</p></div></div></div>';}).join('');}
+renderPort('all');
+document.querySelectorAll('.filter-chip').forEach(function(b){b.onclick=function(){document.querySelectorAll('.filter-chip').forEach(function(x){x.classList.remove('active');});this.classList.add('active');renderPort(this.dataset.f);};});
+
+/* ── SWIPER (CORRIGIDO) ── */
+new Swiper('.depSwiper', {
+  slidesPerView: 1,
+  spaceBetween: 20,
+  pagination: { el: '.swiper-pagination', clickable: true },
+  breakpoints: {
+    640: { slidesPerView: 2 },
+    1024: { slidesPerView: 3 }
+  }
+});
+</script>
+</body>
+</html>
