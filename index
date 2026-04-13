@@ -823,7 +823,7 @@ select.form-input option {
           </a>
           <a href="#" class="orc-contact-item">
             <i class="far fa-envelope"></i>
-            <div><strong>E-mail</strong><span>contato@graficacastello.com</span></div>
+            <div><strong>E-mail</strong><span><span class="__cf_email__" data-cfemail="d3b0bcbda7b2a7bc93b4a1b2b5bab0b2b0b2a0a7b6bfbfbcfdb0bcbe">[email&#160;protected]</span></span></div>
           </a>
           <a href="https://instagram.com/graficacastello" class="orc-contact-item" target="_blank">
             <i class="fab fa-instagram"></i>
@@ -905,7 +905,7 @@ select.form-input option {
         <ul class="footer-contact-list">
           <li><i class="fas fa-map-marker-alt"></i><a href="https://maps.app.goo.gl/WvrbxoYFcuMPiWpz7" target="_blank">Rua Délio da Consolação Rocha, 153 Loja – Santa Helena, Contagem/MG</a></li>
           <li><i class="fab fa-whatsapp"></i><a href="https://wa.me/5531984599525" target="_blank">(31) 98459-9525</a></li>
-          <li><i class="far fa-envelope"></i><a href="#">contato@graficacastello.com</a></li>
+          <li><i class="far fa-envelope"></i><a href="#"><span class="__cf_email__" data-cfemail="23404c4d5742574c63445142454a404240425057464f4f4c0d404c4e">[email&#160;protected]</span></a></li>
           <li><i class="fab fa-instagram"></i><a href="https://instagram.com/graficacastello" target="_blank">@graficacastello</a></li>
           <li><i class="far fa-clock"></i><span>Seg–Sex: 8h–18h &nbsp;|&nbsp; Sáb: 8h–12h</span></li>
         </ul>
@@ -919,7 +919,7 @@ select.form-input option {
 </footer>
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
 /* ── HEADER ── */
 var hdr=document.getElementById('header');
@@ -934,7 +934,7 @@ document.querySelectorAll('.mob-link').forEach(function(l){l.addEventListener('c
 (function(){
   var slides=document.querySelectorAll('.banner-slide'),dots=document.querySelectorAll('.banner-dot'),count=document.getElementById('bannerCount'),cur=0,t;
   function go(n){slides[cur].classList.remove('active');dots[cur].classList.remove('active');cur=(n+slides.length)%slides.length;slides[cur].classList.add('active');dots[cur].classList.add('active');count.textContent=String(cur+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');}
-  function start(){clearInterval(t);t=setInterval(function(){go(cur+1);},5000);}
+  function start(){clearInterval(t);t=setInterval(function(){go(cur+1);},7000);}
   document.getElementById('bannerNext').onclick=function(){go(cur+1);start();};
   document.getElementById('bannerPrev').onclick=function(){go(cur-1);start();};
   dots.forEach(function(d){d.onclick=function(){go(parseInt(this.dataset.i));start();};});
@@ -1259,16 +1259,9 @@ function renderPort(f){var g=document.getElementById('portGrid');var items=f==='
 renderPort('all');
 document.querySelectorAll('.filter-chip').forEach(function(b){b.onclick=function(){document.querySelectorAll('.filter-chip').forEach(function(x){x.classList.remove('active');});this.classList.add('active');renderPort(this.dataset.f);};});
 
-/* ── SWIPER (CORRIGIDO) ── */
-new Swiper('.depSwiper', {
-  slidesPerView: 1,
-  spaceBetween: 20,
-  pagination: { el: '.swiper-pagination', clickable: true },
-  breakpoints: {
-    640: { slidesPerView: 2 },
-    1024: { slidesPerView: 3 }
-  }
-});
+/* ── SWIPER DEPOIMENTOS ── */
+new Swiper('.depSwiper',{slidesPerView:1,spaceBetween:16,pagination:{el:'.swiper-pagination',clickable:true},breakpoints:{640:{slidesPerView:2},1024:{slidesPerView:3}},autoplay:{delay:5000,disableOnInteraction:false},loop:true});
+
 </script>
 </body>
 </html>
